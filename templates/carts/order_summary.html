@@ -30,7 +30,7 @@
               </a>
             </span>
           </td>
-          <td>{% if item.product.product_for == 'rent' %}{{ item.product.price }}*2 {% else %}{{ item.product.price }}{% endif %}</td>
+          <td>{% if item.product.product_for == 'rent' %}{{ item.product.price }}*{{item.days}} {% else %}{{ item.product.price }}{% endif %}</td>
         </tr>
       {% empty %}
         <tr>
