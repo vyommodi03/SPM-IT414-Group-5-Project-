@@ -1,0 +1,104 @@
+{% load static %}
+{% include 'common/header.html' %}
+
+<body>
+	<!-- breadcrumbs -->
+	<div class="w3layouts-breadcrumbs text-center">
+		<div class="container">
+			<span class="agile-breadcrumbs"><a href="{% url 'home' %}"><i class="fa fa-home home_1"></i></a> / <span>Faq</span></span>
+		</div>
+	</div>
+	<!-- //breadcrumbs -->
+	<!---728x90--->
+
+	<!-- Faq -->
+	<div class="faq main-grid-border">
+		<div class="container">
+			<h2 class="w3-head">Faq's</h2>
+			<dl class="faq-list">
+				<dt class="faq-list_h">
+				<h4 class="marker">Q?</h4>
+				<h5 class="marker_head">How soon will my order reach me?</h5>
+				</dt>
+				<dd>
+				<h4 class="marker1">A.</h4>
+				<p class="m_13">Depending on your location, your order should reach you within 7 working days.</p>
+				</dd>
+				<!---728x90--->
+
+				<dt class="faq-list_h">
+				<h4 class="marker">Q?</h4>
+				<h5 class="marker_head">Is there an additional cost for shipping?</h5>
+				</dt>
+				<dd>
+				<h4 class="marker">A.</h4>
+				<p class="m_13">No, we provide free shipping on all domestic orders.</p>
+				</dd>
+				<dt class="faq-list_h">
+				<h4 class="marker">Q?</h4>
+				<h5 class="marker_head">What is the security deposit?</h5>
+				</dt>
+				<dd>
+				<h4 class="marker">A.</h4>
+				<p class="m_13">Every time you reserve an outfit you will be asked to pay a security deposit that is equal to the rental price of your outfit. For example, if your outfit costs ₹5,000, we will add a security deposit of ₹5,000 to your bill, making the total ₹10,000. Since all our garments are authentic designer pieces, the security deposit is just standard protocol and serves as an insurance cover for our outfits whilst they are with you.</p>
+				</dd>
+				<!---728x90--->
+
+				<dt class="faq-list_h">
+				<h4 class="marker">Q?</h4>
+				<h5 class="marker_head">What is the condition of the garment?</h5>
+				</dt>
+				<dd>
+				<h4 class="marker">A.</h4>
+				<p class="m_13">These garments are pre-owned designer wear clothes sourced from our reliable network of fashionistas or never worn sample pieces sourced directly from the designers. We have categorised the garments under 4 types: New, As Good As New, Gently used and Adequately Used.</p>
+				</dd>
+				<dt class="faq-list_h">
+				<h4 class="marker">Q?</h4>
+				<h5 class="marker_head">Can I pay for the garment in cash?</h5>
+				</dt>
+				<dd>
+				<h4 class="marker">A.</h4>
+				<p class="m_13">Sorry, but all payments can only be made online.</p>
+          </dl>
+
+		</div>	
+	</div>
+	<!-- // Faq -->
+
+		<!-- Navigation-JavaScript -->
+			<script src="js/classie.js"></script>
+			<script src="js/main.js"></script>
+		<!-- //Navigation-JavaScript -->
+		<!-- here stars scrolling icon -->
+			<script type="text/javascript">
+				$(document).ready(function() {
+					/*
+						var defaults = {
+						containerID: 'toTop', // fading element id
+						containerHoverID: 'toTopHover', // fading element hover id
+						scrollSpeed: 1200,
+						easingType: 'linear' 
+						};
+					*/
+										
+					$().UItoTop({ easingType: 'easeOutQuart' });
+										
+					});
+			</script>
+			<!-- start-smoth-scrolling -->
+			<script type="text/javascript" src="js/move-top.js"></script>
+			<script type="text/javascript" src="js/easing.js"></script>
+			<script type="text/javascript">
+				jQuery(document).ready(function($) {
+					$(".scroll").click(function(event){		
+						event.preventDefault();
+						$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+					});
+				});
+			</script>
+			<!-- start-smoth-scrolling -->
+		<!-- //here ends scrolling icon -->
+</body>
+
+<!-- Mirrored from p.w3layouts.com/demos/aug-2016/24-08-2016/resale_v2/web/faq.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Oct 2018 11:01:40 GMT -->
+{% include 'common/footer.html' %}

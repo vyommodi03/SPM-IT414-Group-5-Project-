@@ -1,0 +1,5 @@
+braintree==3.45.0
+Django==2.2.6
+django_imagekit==4.0.2
+requests==2.22.0
+imagekit==1.0.6

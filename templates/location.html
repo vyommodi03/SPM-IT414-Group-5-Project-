@@ -1,0 +1,18 @@
+{% load static %}
+{% include 'common/header.html' %}
+
+<div class="w3layouts-breadcrumbs text-center">
+		<div class="container">
+			<span class="agile-breadcrumbs"><a href='{% url "home" %}'><i class="fa fa-home home_1"></i></a> / <span>Location</span></span>
+		</div>
+	</div>
+	<!-- //breadcrumbs -->
+
+<br>
+<br>
+
+ <div class="map-w3layouts">
+     <h3>Location</h3>
+     <iframe width="600" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCPyCGT0Kto9CykFg4zkBAZ5WTceH6YWSg&q=101,1st Floor, Parshwa Tower,, Above Kotak Mahindra Bank, Near Pakwan II, SG Highway, Bodakdev, Bodakdev, Ahmedabad, Gujarat 380054" allowfullscreen></iframe>
+ </div>
+{% include 'common/footer.html' %}

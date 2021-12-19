@@ -1,0 +1,245 @@
+{% load static %}
+{% include 'common/header.html' %}
+
+	<!-- Slider -->
+<div class="slider">
+    <ul class="rslides" id="slider">
+        <li>
+            <div class="w3ls-slide-text">
+                <h3>Welcome to 21st Century Dress Up</h3>
+                <a href="{% url 'rent_list' %}" class="w3layouts-explore">Explore</a>
+            </div>
+        </li>
+        <li>
+            <div class="w3ls-slide-text">
+                <h3>Sell or Advertise Cloths Online</h3>
+                <a href="{% url 'sell_list' %}" class="w3layouts-explore-all">Browse all Categories</a>
+            </div>
+        </li>
+        <li>
+            <div class="w3ls-slide-text">
+                <h3>The best deals are here</h3>
+                <a href="{% url 'sell_list' %}" class="w3layouts-explore">Explore</a>
+            </div>
+        </li>
+        <li>
+            <div class="w3ls-slide-text">
+                <h3>Check out the Featured Ads</h3>
+                <a href='{% url "featured" %}' class="w3layouts-explore-all">Explore</a>
+            </div>
+        </li>
+        <li>
+            <div class="w3ls-slide-text">
+                <h3>Your Dream Wardrobe is here</h3>
+                <a href="{% url 'rent_list' %}" class="w3layouts-explore">Explore</a>
+            </div>
+        </li>
+        <li>
+            <div class="w3ls-slide-text">
+                <h3>Be a Fashionista</h3>
+                <a href="{% url 'featured' %}" class="w3layouts-explore">Explore</a>
+            </div>
+        </li>
+    </ul>
+</div>
+<!-- //Slider -->
+<!---728x90--->
+<br/><br/><br/><br/><br/>
+
+
+
+<section>
+    <style>
+
+    .textwithblurredbg{
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        margin: 4px;
+        position: relative;
+    }
+    .textwithblurredbg img{
+        height: 100%;
+        width: 50%;
+        border-radius: 4px;
+        transition: .3s;
+    }
+    .textwithblurredbg:hover img{
+        filter: blur(2px) brightness(60%);
+
+    }
+    .textwithblurredbg :not(img){
+        position: absolute;
+        top: 30%;
+        z-index: 1;
+        color: #FFFFFF;
+        text-align: center;
+        width: 50%;
+        opacity: 0;
+        transition: .3s;
+    }
+    .textwithblurredbg a{
+        top: 50%;
+    }
+    .textwithblurredbg:hover :not(img){
+        opacity: 1;
+    }
+
+    </style>
+    <table>
+        <td>
+            <div class="textwithblurredbg">
+                <img src='{% static "images/banner1.jpg" %}' style="height: 100%;width: 768px" >
+                <h2 style="font-size: 50px;">Rent</h2>
+                <a href="{% url 'rent_list' %}">View collection</a>
+            </div>
+        </td>
+        <td>
+            <div class="textwithblurredbg">
+                <img src='{% static "images/wall2.jpg" %}' style="height: 100%;width: 768px" >
+                <h2 style="font-size: 50px;">Buy</h2>
+                <a href="{% url 'sell_list' %}">View collection</a>
+            </div>
+        </td>
+    </table>
+</section>
+
+<!-- most-popular-ads -->
+<div class="w3l-popular-ads">
+    <h3>Most Popular Ads</h3>
+    <div class="w3l-popular-ads-info">
+        <div class="col-md-4 w3ls-portfolio-left">
+            <div class="portfolio-img event-img">
+                <img src="{% static 'images/z1.jpg' %}" class="img-responsive" alt="" width="200" height="200"/>
+                <div class="over-image"></div>
+            </div>
+            <div class="portfolio-description">
+                <h4><a href="{% url 'traditional' %}">Traditional Wear</a></h4>
+                <p>Choose the best traditional wear from best designers.</p>
+                <a href="{% url 'traditional' %}">
+                    <span>Explore</span>
+                </a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="col-md-4 w3ls-portfolio-left">
+            <div class="portfolio-img event-img">
+                <img src="{% static 'images/z2.jpg' %}" class="img-responsive" alt="" width="200" height="200"/>
+                <div class="over-image"></div>
+            </div>
+            <div class="portfolio-description">
+                <h4><a href="{% url 'formal' %}">Formal</a></h4>
+                <p>Shop Formal wear online at best price.</p>
+                <a href="{% url 'formal' %}">
+                    <span>Explore</span>
+                </a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="col-md-4 w3ls-portfolio-left">
+            <div class="portfolio-img event-img">
+                <img src="{% static 'images/z3.jpg' %}" class="img-responsive" alt="" width="200" height="200"/>
+                <div class="over-image"></div>
+            </div>
+            <div class="portfolio-description">
+                <h4><a href="{% url 'casual' %}">Casual</a></h4>
+                <p>Choose your best casual from here.</p>
+                <a href="{% url 'casual' %}">
+                    <span>Explore</span>
+                </a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="col-md-4 w3ls-portfolio-left">
+            <div class="portfolio-img event-img">
+                <img src="{% static 'images/z4.jpg' %}" class="img-responsive" alt="" width="200" height="200"/>
+                <div class="over-image"></div>
+            </div>
+            <div class="portfolio-description">
+                <h4><a href="{% url 'sports' %}">Sports</a></h4>
+                <p>Designed for sport, crafted for life.</p>
+                <a href="{% url 'sports' %}">
+                    <span>Explore</span>
+                </a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="col-md-4 w3ls-portfolio-left">
+            <div class="portfolio-img event-img">
+                <img src="{% static 'images/a9.jpg' %}" class="img-responsive" alt=""  width="200" height="200"/>
+                <div class="over-image"></div>
+            </div>
+            <div class="portfolio-description">
+                <h4><a href="{% url 'ethnic' %}">Ethnic</a></h4>
+                <p> Shop Latest Collection of Ethnic Wear here.</p>
+                <a href="{% url 'ethnic' %}">
+                    <span>Explore</span>
+                </a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="col-md-4 w3ls-portfolio-left">
+            <div class="portfolio-img event-img">
+                <img src="{% static 'images/a4.jpg' %}" class="img-responsive" alt="" width="200" height="200"/>
+                <div class="over-image"></div>
+            </div>
+            <div class="portfolio-description">
+                <h4><a href="{% url 'western' %}">Western</a></h4>
+                <p>Bringing you the best in both men's and women's western wear.</p>
+                <a href="{% url 'western' %}">
+                    <span>Explore</span>
+                </a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+         <div class="col-md-4 w3ls-portfolio-left">
+            <div class="portfolio-img event-img">
+                <img src="{% static 'images/z5.jpg' %}" class="img-responsive" alt="" width="200" height="200"/>
+                <div class="over-image"></div>
+            </div>
+            <div class="portfolio-description">
+                <h4><a href="{% url 'tshirts' %}">T-shirts</a></h4>
+                <p>Cool T-SHIRTS for Effortless fashion.</p>
+                <a href="{% url 'tshirts' %}">
+                    <span>Explore</span>
+                </a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+         <div class="col-md-4 w3ls-portfolio-left">
+            <div class="portfolio-img event-img">
+                <img src="{% static 'images/z6.jpg' %}" class="img-responsive" alt="" width="200" height="200"/>
+                <div class="over-image"></div>
+            </div>
+            <div class="portfolio-description">
+                <h4><a href="{% url 'kids' %}">Kids</a></h4>
+                <p>Choose the best kids wear from best designers.</p>
+                <a href="{% url 'kids' %}">
+                    <span>Explore</span>
+                </a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+         <div class="col-md-4 w3ls-portfolio-left">
+            <div class="portfolio-img event-img">
+                <img src="{% static 'images/z7.jpg' %}" class="img-responsive" alt="" width="200" height="200"/>
+                <div class="over-image"></div>
+            </div>
+            <div class="portfolio-description">
+                <h4><a href="{% url 'jumpsuits' %}">Jumpsuits</a></h4>
+                <p>Get the best jumpsuits from best designers.</p>
+                <a href="{% url 'jumpsuits' %}">
+                    <span>Explore</span>
+                </a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+
+        <div class="clearfix"> </div>
+    </div>
+			 </div>
+			<!-- most-popular-ads -->			
+			<!---728x90--->
+
+
+{% include 'common/footer.html' %}

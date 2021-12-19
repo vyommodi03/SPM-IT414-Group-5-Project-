@@ -1,0 +1,306 @@
+{% load static %}
+{% load imagekit %}
+{% include 'common/header.html' %}
+<style>
+    #delete {
+        border-radius: 3px;
+        display: inline-block;
+        position: relative;
+    }
+    #edit {
+        border-radius: 3px;
+        display: inline-block;
+        position: absolute;
+        right: 115px;
+      }
+    #rent {
+        border-radius: 3px;
+        display: inline-block;
+        position: absolute;
+        right: 30px;
+    }
+</style>
+
+<style>
+    #cart {
+        border-radius: 3px;
+    }
+    #remove {
+        border-radius: 3px;
+        display: inline-block;
+        position: relative;
+    }
+    #in {
+        border-radius: 3px;
+        display: inline-block;
+        position: absolute;
+        right: 100px;
+      }
+</style>
+
+
+
+	<!-- breadcrumbs -->
+	<div class="w3layouts-breadcrumbs text-center">
+		<div class="container">
+			<span class="agile-breadcrumbs"><a href="{% url 'home' %}">
+                <i class="fa fa-home home_1"></i></a> / <span>All Ads</span>
+            </span>
+		</div>
+	</div>
+	<!-- //breadcrumbs -->
+	<!---728x90--->
+
+	<!-- Products -->
+	<div class="total-ads main-grid-border">
+		<div class="container">
+			<div class="ads-grid">
+				<div class="side-bar col-md-3">
+					<div class="search-hotel">
+					<h3 class="agileits-sear-head">Name contains</h3>
+					<form method="get" action="{% url 'search' %}">
+						<input type="text" name="product" value="Product Name or Category..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Product name...';}" required="">
+						<input type="submit" value=" ">
+					</form>
+				</div>
+
+
+                </div>
+				<div class="agileinfo-ads-display col-md-9">
+					<div class="wrapper">
+					<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+					  <ul id="myTab" class="nav nav-tabs nav-tabs-responsive" role="tablist">
+						<li role="presentation" class="active">
+						  <a href="{% url 'home' %}" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+							<span class="text">All Ads</span>
+						  </a>
+						</li>
+					  </ul>
+					  <div id="myTabContent" class="tab-content">
+						<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+						   <div>
+                               <div id="container">
+
+							<ul class="list">
+                            {% if object_list %}
+                                {% for product in object_list %}
+                                    {% if product.sold == False %}
+                                        <li>
+											#if {{ MEDIA_URL }} in there and throws error then remove it
+											#and not available then add {{ MEDIA_URL }}
+                                        <img src='{{ MEDIA_URL }}{{ product.smart1.url }}' title="" alt="" />
+                                        <section class="list-left">
+                                        <h4 class="title">{{ product.title }}</h4>
+                                        <span class="adprice">Rs. {{ product.price }}</span>
+                                        <p class="catpath">{{ product.get_category_display }} » {{ product.title }}</p>
+                                            <p>{{ product.timestamp|timesince }} ago</p>
+                                        </section>
+                                        <section class="list-right">
+                                        <span class="cityname"><strong>For {{ product.get_occasion_display }}</strong></span>
+                                        <span class="adprice">{{ product.get_condition_display }}</span>
+                                        {% if product.product_for == "sell" %}
+                                             <span class="adprice">For Sell</span>
+                                        {% else %}
+                                            <span class="adprice">For Rent</span>
+                                        {% endif %}
+                                                <br/>
+                                                {% if product.user == request.user.profile %}
+                                                    <a href='{% url "edit" product.id %}'><input type="submit" id="edit" value="Edit" class="btn btn-info"></a>
+                                                    <a href='{% url "delete" product.id %}'><input type="submit" id="delete" value="Delete" class="btn btn-danger"></a>
+                                                {% elif product in current_order_products %}
+                                                    <a href="{% url 'cart:order_summary' %}" class="btn btn-warning">Go to Cart</a>
+                                                {% else %}
+                                                    <a href="{% url 'cart:add_to_cart' product.id %}" class="btn btn-warning">Add to Cart</a>
+                                                {% endif %}
+
+                                            {% endif %}
+                                        </section>
+                                        <div class="clearfix"></div>
+                                        </li>
+
+                                {% endfor %}
+                            {% else %}
+                                <h2>No entries found</h2>
+                            {% endif %}
+							</ul>
+						</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+						 <div>
+                             <div id="container">
+								<div class="view-controls-list" id="viewcontrols">
+									<label>view :</label>
+									<a class="gridview"><i class="glyphicon glyphicon-th"></i></a>
+									<a class="listview active"><i class="glyphicon glyphicon-th-list"></i></a>
+								</div>
+                             </div>
+                         </div>
+						</div>
+                        {% if object_list.has_other_pages %}
+                          <ul class="pagination">
+                            {% if object_list.has_previous %}
+                              <li><a href="?page={{ object_list.previous_page_number }}">&laquo;</a></li>
+                            {% else %}
+                              <li class="disabled"><span>&laquo;</span></li>
+                            {% endif %}
+                            {% for i in object_list.paginator.page_range %}
+                              {% if object_list.number == i %}
+                                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                              {% else %}
+                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                              {% endif %}
+                            {% endfor %}
+                            {% if object_list.has_next %}
+                              <li><a href="?page={{ object_list.next_page_number }}">&raquo;</a></li>
+                            {% else %}
+                              <li class="disabled"><span>&raquo;</span></li>
+                            {% endif %}
+                          </ul>
+                        {% endif %}
+                      </div>
+					</div>
+				</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!-- // Products -->
+		<!-- Navigation-JavaScript -->
+<!-- switcher-grid and list alignment -->
+<script src='{% static "js/tabs.js" %}'></script>
+<script type="text/javascript">
+$(document).ready(function () {
+    var elem=$('#container ul');
+	$('#viewcontrols a').on('click',function(e) {
+		if ($(this).hasClass('gridview')) {
+			elem.fadeOut(1000, function () {
+				$('#container ul').removeClass('list').addClass('grid');
+				$('#viewcontrols').removeClass('view-controls-list').addClass('view-controls-grid');
+				$('#viewcontrols .gridview').addClass('active');
+				$('#viewcontrols .listview').removeClass('active');
+				elem.fadeIn(1000);
+			});
+		}
+		else if($(this).hasClass('listview')) {
+			elem.fadeOut(1000, function () {
+				$('#container ul').removeClass('grid').addClass('list');
+				$('#viewcontrols').removeClass('view-controls-grid').addClass('view-controls-list');
+				$('#viewcontrols .gridview').removeClass('active');
+				$('#viewcontrols .listview').addClass('active');
+				elem.fadeIn(1000);
+			});
+		}
+	});
+});
+</script>
+<!-- //switcher-grid and list alignment -->
+<script>
+(function(){
+	if(typeof _bsa !== 'undefined' && _bsa) {
+  		// format, zoneKey, segment:value, options
+  		_bsa.init('flexbar', 'CKYI627U', 'placement:w3layoutscom');
+  	}
+})();
+</script>
+<script>
+(function(){
+if(typeof _bsa !== 'undefined' && _bsa) {
+	// format, zoneKey, segment:value, options
+	_bsa.init('fancybar', 'CKYDL2JN', 'placement:demo');
+}
+})();
+</script>
+<script>
+(function(){
+	if(typeof _bsa !== 'undefined' && _bsa) {
+  		// format, zoneKey, segment:value, options
+  		_bsa.init('stickybox', 'CKYI653J', 'placement:w3layoutscom');
+  	}
+})();
+</script><script>
+	(function(v,d,o,ai){ai=d.createElement("script");ai.defer=true;ai.async=true;ai.src=o;d.head.appendChild(ai);})(window, document, "https://vdo.ai/core/w3layouts/vdo.ai.js");
+	</script><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125810435-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125810435-1');
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-30027142-1', 'w3layouts.com');
+  ga('send', 'pageview');
+</script>
+			<script src='{% static "js/classie.js" %}'></script>
+			<script src='{% static "js/main.js" %}'></script>
+		<!-- //Navigation-JavaScript -->
+		<!-- here stars scrolling icon -->
+			<script type="text/javascript">
+				$(document).ready(function() {
+					/*
+						var defaults = {
+						containerID: 'toTop', // fading element id
+						containerHoverID: 'toTopHover', // fading element hover id
+						scrollSpeed: 1200,
+						easingType: 'linear'
+						};
+					*/
+
+					$().UItoTop({ easingType: 'easeOutQuart' });
+
+					});
+			</script>
+			<!-- start-smoth-scrolling -->
+			<script type="text/javascript" src='{% static "js/move-top.js" %}'></script>
+			<script type="text/javascript" src='{% static "js/easing.js" %}'></script>
+			<script type="text/javascript">
+				jQuery(document).ready(function($) {
+					$(".scroll").click(function(event){
+						event.preventDefault();
+						$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+					});
+				});
+			</script>
+			<!-- start-smoth-scrolling -->
+		<!-- //here ends scrolling icon -->
+
+
+<script>
+    // Cart + Add Products
+    var productForm = $(".form-product-ajax");
+    productForm.submit(function(event){
+        event.preventDefault();
+        var thisForm = $(this);
+        var actionEndpoint = thisForm.attr("action");
+        var httpMethod = thisForm.attr("method");
+        var formData = thisForm.serialize();
+
+        $.ajax({
+            url: actionEndpoint,
+            method: httpMethod,
+            data: formData,
+            success: function(data){
+                var submitSpan = thisForm.find(".submit-span");
+                if (data.added){
+                    submitSpan.html("<div class='btn-group'> <a id='in' class='btn btn-info'>In cart</a> <button type='submit' id='remove' class='btn btn-danger'>Remove?</button></div>")
+                } else {
+                    submitSpan.html("<button type='submit' id='cart' class='btn btn-success'>Add to cart</button>")
+                }
+                var cartCount = $(".cart-items");
+                    cartCount.text(data.cartItemCount);
+                },
+            error: function (errorData) {
+                console.log("Error");
+                console.log(errorData)
+            }
+        })
+    })
+</script>
+{% include 'common/footer.html' %}
